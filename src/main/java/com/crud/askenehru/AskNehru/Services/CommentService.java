@@ -11,4 +11,5 @@ public interface CommentService {
     public CommentDto updateComment(CommentDto payload, Long id);
     public String deleteById(Long id);
     public List<CommentDto> getAllComments();
+    public CommentDto getById(Long id);
 }

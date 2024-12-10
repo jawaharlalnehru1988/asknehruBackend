@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("comment")
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:57676" })
 public class CommnetController {
     @Autowired
     public CommentService commentService;
@@ -39,4 +39,11 @@ public class CommnetController {
         List<CommentDto> comments = commentService.getAllComments();
         return new ResponseEntity<>(comments, HttpStatus.OK);
     }
+
+    @GetMapping("getById/{id}")
+    public ResponseEntity<CommentDto> getDataById(@PathVariable Long id){
+            CommentDto commentDto = commentService.getById(id);
+            return new ResponseEntity<>(commentDto, HttpStatus.OK);
+    }
+
 }

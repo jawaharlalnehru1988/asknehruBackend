@@ -46,6 +46,12 @@ public class CommentImpl implements CommentService{
             return comments.stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
+    @Override
+    public CommentDto getById(Long id){
+        CommentEntity comment = commentRepository.findById(id).orElseThrow(()-> new RuntimeException("The data with id : " + id + "not found"));
+            return convertToDto(comment);
+    }
+
 
     public CommentEntity convertToEntity(CommentDto payload){
         CommentEntity entity = new CommentEntity();
