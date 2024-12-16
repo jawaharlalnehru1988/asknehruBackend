@@ -1,4 +1,4 @@
-package com.crud.askenehru.AskNehru;
+package com.crud.askenehru.AskNehru.Repositories;
 
 import com.crud.askenehru.AskNehru.Entities.CommentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

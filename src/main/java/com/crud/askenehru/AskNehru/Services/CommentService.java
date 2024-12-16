@@ -1,6 +1,5 @@
 package com.crud.askenehru.AskNehru.Services;
 
-import com.crud.askenehru.AskNehru.CommentRepository;
 import com.crud.askenehru.AskNehru.Dto.CommentDto;
 
 import java.util.List;

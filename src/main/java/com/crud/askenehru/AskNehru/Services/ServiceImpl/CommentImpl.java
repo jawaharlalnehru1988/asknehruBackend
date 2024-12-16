@@ -1,8 +1,9 @@
-package com.crud.askenehru.AskNehru.Services;
+package com.crud.askenehru.AskNehru.Services.ServiceImpl;
 
-import com.crud.askenehru.AskNehru.CommentRepository;
+import com.crud.askenehru.AskNehru.Repositories.CommentRepository;
 import com.crud.askenehru.AskNehru.Dto.CommentDto;
 import com.crud.askenehru.AskNehru.Entities.CommentEntity;
+import com.crud.askenehru.AskNehru.Services.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CommentImpl implements CommentService{
+public class CommentImpl implements CommentService {
     @Autowired
     public CommentRepository commentRepository;
 
