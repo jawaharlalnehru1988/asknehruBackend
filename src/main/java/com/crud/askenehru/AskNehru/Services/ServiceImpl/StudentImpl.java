@@ -6,12 +6,15 @@ import com.crud.askenehru.AskNehru.Entities.Laptop;
 import com.crud.askenehru.AskNehru.Entities.Student;
 import com.crud.askenehru.AskNehru.Repositories.LaptopRepository;
 import com.crud.askenehru.AskNehru.Repositories.StudentRepository;
+import com.crud.askenehru.AskNehru.Services.StudentService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class StudentService {
+public class StudentImpl implements StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
@@ -53,12 +56,39 @@ public class StudentService {
     }
 
     @Transactional
+    @Override
     public StudentDTO saveStudentWithLaptop(StudentDTO studentDTO){
         Student student = convertToEntity(studentDTO);
         Student saveStudent = studentRepository.save(student);
         return convertoDTO(saveStudent);
     }
-//    public StudentDTO getStudentById(int id){
-//
-//    }
+
+    @Override
+    public List<StudentDTO> getAllStudents(){
+        List<Student> students = studentRepository.findAll();
+        return students.stream().map(this::convertoDTO).toList();
+    }
+
+    @Override
+    public StudentDTO getStudentById(int id){
+        Student student = studentRepository.findById(id).orElseThrow(() -> new RuntimeException("Student not found"));
+        return convertoDTO(student);
+    }
+
+    @Override
+    public String deleteStudentById(int id){
+        studentRepository.deleteById(id);
+        return "Student deleted successfully";
+    }
+
+    public StudentDTO updateStudent(StudentDTO studentDTO){
+        Student student = convertToEntity(studentDTO);
+        Student updatedStudent = studentRepository.save(student);
+        return convertoDTO(updatedStudent);
+    }
+
+    public StudentDTO getStudentByName(String name){
+        Student student = studentRepository.findByStudentName(name);
+        return convertoDTO(student);
+    }
 }

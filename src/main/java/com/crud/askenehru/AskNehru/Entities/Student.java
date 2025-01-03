@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "jpa_student")
 @Data
@@ -20,5 +22,7 @@ public class Student {
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Laptop laptop;
+
+
 }
 

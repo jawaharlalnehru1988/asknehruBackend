@@ -8,14 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LaptopDTO {
-    public LaptopDTO(int laptopId, String modelNumber, String brand) {
-        this.laptopId = laptopId;
-        this.modelNumber = modelNumber;
-        this.brand = brand;
-    }
 
     private int laptopId;
     private String modelNumber;
     private String brand;
-    private StudentDTO student;
 }

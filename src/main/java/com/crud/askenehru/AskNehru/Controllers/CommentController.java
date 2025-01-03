@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("comment")
 @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:57676" })
-public class CommnetController {
+public class CommentController {
     @Autowired
     public CommentService commentService;
 
