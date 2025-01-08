@@ -1,9 +1,13 @@
 package com.crud.askenehru.AskNehru.Entities;
 
 import jakarta.persistence.*;
+import jdk.jfr.EventType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GeneratorType;
+
+import java.util.EventListener;
 
 @Entity
 @Data
@@ -13,10 +17,11 @@ import lombok.NoArgsConstructor;
 public class Courses {
 
     @Id
-    private int courseId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer courseId;
     private String courseName;
     private String courseDescription;
-    private int courseDuration;
+    private String courseDuration;
 
     @ManyToOne
     @JoinColumn(name = "pupil_id")

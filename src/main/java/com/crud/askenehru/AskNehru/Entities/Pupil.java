@@ -1,9 +1,6 @@
 package com.crud.askenehru.AskNehru.Entities;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,11 +13,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pupil {
-    private int pupilId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer pupilId;
     private String pupilName;
     private String about;
-    private Laptop laptop;
 
-    @OneToMany(mappedBy = "pupil", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pupil", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Courses> courses;
 }
