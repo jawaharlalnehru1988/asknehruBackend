@@ -1,5 +1,7 @@
 package com.crud.askenehru.AskNehru.Services.ServiceImpl;
 
+import com.crud.askenehru.AskNehru.Dto.StudentDTO;
+import com.crud.askenehru.AskNehru.Exceptions.ValidationException;
 import com.crud.askenehru.AskNehru.Repositories.CommentRepository;
 import com.crud.askenehru.AskNehru.Dto.CommentDto;
 import com.crud.askenehru.AskNehru.Entities.CommentEntity;
@@ -53,6 +55,15 @@ public class CommentImpl implements CommentService {
             return convertToDto(comment);
     }
 
+    public void validateUser(StudentDTO studentDTO){
+        if(studentDTO.getStudentName() == null || studentDTO.getStudentName().isEmpty()){
+            throw new ValidationException("Student name cannot be null or emptly");
+        }
+
+        if(studentDTO.getStudentId() < 0){
+            throw new ValidationException("Student id cannot be negative");
+        }
+    }
 
     public CommentEntity convertToEntity(CommentDto payload){
         CommentEntity entity = new CommentEntity();
